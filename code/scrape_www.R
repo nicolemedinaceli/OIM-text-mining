@@ -27,12 +27,12 @@ bd<-c(bd,aux)
 }
 }
 bd<-paste0("https:",bd)
-save(bd,file="buscojobs.RData")
+save(bd,file="buscojobs_url.RData")
 # al interior de los anuncios
-load("buscojobs.RData")
+load("buscojobs_url.RData")
 bd2<-data.frame(titulo="",text="",destino="",stringsAsFactors = F)
 
-for(i in 1:length(bd)){
+for(i in 823:length(bd)){
 print(i)
 www1<-read_html(bd[i])
 #titulo
@@ -46,4 +46,4 @@ dest<-gsub("\t","", html_text(aux[pos][2]),fixed=T)
 dest<-gsub("\n","", dest,fixed=T)
 bd2[i,3]<-dest
 }
-save(bd,file="buscojobs.RData")
+save(bd2,file="buscojobs_data.RData")
